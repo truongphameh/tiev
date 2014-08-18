@@ -32,6 +32,7 @@ Plugin 'pangloss/vim-javascript' " better javascript indentation
 Plugin 'tpope/vim-rails' " rails syntax
 Plugin 'tpope/vim-surround' " quick brackets
 Plugin 'bronson/vim-trailing-whitespace' " mark / quick remove trailing spaces
+Plugin 'bling/vim-bufferline' " list buffers in command bar
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
