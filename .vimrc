@@ -73,3 +73,5 @@ set noshowmode
 " Use 256 colors
 set t_Co=256
 "END powerline
+
+let g:ctrlp_working_path_mode = 'a' " Let CtrlP to use path mode to vim working directory as highest root
