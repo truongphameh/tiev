@@ -11,8 +11,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'rking/ag.vim' " seach in amny files # require the_silver_searcher
-Plugin 'docunext/closetag.vim' " Auto close HTML tags
+Plugin 'rking/ag.vim' " search in many files # require the_silver_searcher
+Plugin 'docunext/closetag.vim' " auto close HTML tags
 Plugin 'kien/ctrlp.vim' " quick open file
 Plugin 'vim-scripts/dbext.vim' " quick run sql script
 Plugin 'Raimondi/delimitMate' " auto close brackets, parenthesis,...
