@@ -6,7 +6,9 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+#ZSH_THEME="frontcube"
+ZSH_THEME="bullet-train"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -46,13 +48,17 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(tmux git svn rails ruby rvm gem bundler catimg dircycle web-search colorize compleat cp safe-paste fasd jump rake-fast vundle
+zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
+zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
+)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/viettp/.rvm/gems/ree-1.8.7-2012.02@msss/bin:/home/viettp/.rvm/gems/ree-1.8.7-2012.02@global/bin:/home/viettp/.rvm/rubies/ree-1.8.7-2012.02/bin:/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin:/home/viettp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+#export PATH="/home/viettp/.rvm/gems/ree-1.8.7-2012.02@msss/bin:/home/viettp/.rvm/gems/ree-1.8.7-2012.02@global/bin:/home/viettp/.rvm/rubies/ree-1.8.7-2012.02/bin:/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin:/home/viettp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin:/home/viettp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -82,3 +88,31 @@ export PATH="/home/viettp/.rvm/gems/ree-1.8.7-2012.02@msss/bin:/home/viettp/.rvm
 
 export TERM="screen-256color"
 export DEFAULT_USER="viettp"
+
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
+alias rake='noglob rake'
+alias opencv='~/.compile_opencv.sh'
+alias fucking='sudo'
+export PATH="$PATH:/home/viettp/flow/"
+
+# token of viettp
+export APIARY_API_KEY="e74bcfbda148acbbfc2ae151f85beb31"
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+#export GOPATH=$HOME/go
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+stty stop undef
+
+AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=4"
+
+# Enable autosuggestions automatically.
+zle-line-init() {
+  zle autosuggest-start
+}
+zle -N zle-line-init
