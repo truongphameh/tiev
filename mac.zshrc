@@ -87,7 +87,7 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-alias vim='/usr/local/Cellar/vim/7.4.1655/bin/vim'
+#alias vim='/usr/local/Cellar/vim/7.4.1655/bin/vim'
 alias rake='noglob rake'
 alias opencv='~/.compile_opencv.sh'
 alias fucking='sudo'
@@ -102,3 +102,5 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 #  zle autosuggest-start
 #}
 #zle -N zle-line-init
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

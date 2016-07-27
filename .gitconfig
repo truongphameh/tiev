@@ -1,0 +1,21 @@
+[user]
+	email = phuocviet89@gmail.com
+[core]
+	editor = vim
+  autocrlf = input
+[alias]
+  hide = update-index --assume-unchanged
+  unhide = update-index --no-assume-unchanged
+  ls-hidden = !git ls-files -v | grep "^[[:lower:]]"
+  skip = update-index --skip-worktree
+  unskip = update-index --no-skip-worktree
+  ls-skipped = !git ls-files -v | grep "^[S]"
+  s = status -s
+	lg = log --oneline --decorate --all --graph
+  llg = log --format=moreoneline --decorate --graph --all
+[push]
+	default = simple
+[commit]
+  template = ~/.gitmessage
+[pretty]
+  moreoneline = "%C(auto)%h%d% s% Cgreen(%ar)% C(blue dim)<%an>"
