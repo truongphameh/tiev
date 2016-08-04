@@ -27,6 +27,10 @@ cp ~/.vimrc ~/.vimrc.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/mac.vimrc -O ~/.vimrc
 vim +PluginInstall +qall
 
+## Compile YouCompleteMe
+brew install cmake
+(cd ~/.vim/bundle/YouCompleteMe && ./install.py)
+
 # Install tmux
 brew install tmux
 cp ~/.tmux.conf ~/.tmux.conf.bk
