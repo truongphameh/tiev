@@ -35,6 +35,7 @@ brew install cmake
 brew install tmux
 cp ~/.tmux.conf ~/.tmux.conf.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/mac.tmux.conf -O ~/.tmux.conf
+wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmuxline.conf
 
 # Install RVM
 brew install gpg
