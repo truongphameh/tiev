@@ -19,6 +19,8 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ## Get the personal configurations
 cp ~/.zshrc ~/.zshrc.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/mac.zshrc -O ~/.zshrc
+wget https://raw.githubusercontent.com/tiev/tiev/master/.gitconfig -O ~/.gitconfig
+wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmessage
 
 # Install VIM
 brew install vim
