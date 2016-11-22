@@ -58,3 +58,5 @@ echo "--------------------"
 echo "RUN THIS: "
 echo "cp /usr/local/Cellar/redis/{version}/homebrew.mxcl.redis.plist ~/Library/LaunchAgents/"
 echo "____________________"
+
+xcode-select --install
