@@ -180,5 +180,7 @@ set backspace=2 " make backspace work like most other apps
 map ]l :lnext
 map [l :lprev
 
+noremap <Leader>s :update<CR>
+
 " git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
