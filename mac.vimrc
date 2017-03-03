@@ -114,6 +114,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 
 Plugin 'plasticboy/vim-markdown' " Markdown syntax highlighting, matching rules and mappings
+let g:vim_markdown_folding_disabled = 1
 Plugin 'pangloss/vim-javascript' " better javascript indentation
 Plugin 'tpope/vim-rails' " rails syntax
 Plugin 'kchmck/vim-coffee-script' " coffee-script syntax and supports
