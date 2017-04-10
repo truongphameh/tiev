@@ -85,6 +85,8 @@ let g:slime_target="tmux" " Configure vim-slime to send text to tmux
 Plugin 'vimoutliner/vimoutliner' " VimOutliner
 Plugin 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
+Plugin 'wakatime/vim-wakatime' " WakaTime: log time developing
+
 " AUTO-TEXT
 Plugin 'docunext/closetag.vim' " Auto close HTML tags
 Plugin 'Raimondi/delimitMate' " auto close brackets, parenthesis,...
@@ -115,6 +117,8 @@ let g:syntastic_enable_signs=1
 
 Plugin 'plasticboy/vim-markdown' " Markdown syntax highlighting, matching rules and mappings
 let g:vim_markdown_folding_disabled = 1
+Plugin 'elixir-lang/vim-elixir' " syntax for Elixir
+Plugin 'avdgaag/vim-phoenix' " work with Phoenix framework
 Plugin 'pangloss/vim-javascript' " better javascript indentation
 Plugin 'tpope/vim-rails' " rails syntax
 Plugin 'kchmck/vim-coffee-script' " coffee-script syntax and supports
