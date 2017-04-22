@@ -48,7 +48,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git svn rails ruby rvm gem bundler catimg dircycle web-search colorize compleat cp safe-paste fasd jump rake-fast vundle
+plugins=(tmux git rails ruby rvm gem bundler colorize cp safe-paste rake-fast vundle
 zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
 zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
 )
@@ -96,12 +96,11 @@ fi
 alias rake='noglob rake'
 alias opencv='~/.compile_opencv.sh'
 alias fucking='sudo'
-export PATH="$PATH:/home/viettp/flow/"
 
 # token of viettp
 export APIARY_API_KEY="e74bcfbda148acbbfc2ae151f85beb31"
 
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+#[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 #export GOPATH=$HOME/go
 #export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
@@ -109,10 +108,10 @@ export APIARY_API_KEY="e74bcfbda148acbbfc2ae151f85beb31"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 stty stop undef
 
-AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=4"
+AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
 # Enable autosuggestions automatically.
-zle-line-init() {
-  zle autosuggest-start
-}
-zle -N zle-line-init
+#zle-line-init() {
+#  zle autosuggest-start
+#}
+#zle -N zle-line-init
