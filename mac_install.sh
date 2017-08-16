@@ -33,6 +33,9 @@ vim +PluginInstall +qall
 brew install cmake
 (cd ~/.vim/bundle/YouCompleteMe && ./install.py)
 
+## Install ag command
+brew install the_silver_searcher
+
 # Install tmux
 brew install tmux
 cp ~/.tmux.conf ~/.tmux.conf.bk
