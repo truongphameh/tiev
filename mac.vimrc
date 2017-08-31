@@ -120,8 +120,9 @@ let g:syntastic_check_on_wq=0
 "let g:syntastic_always_populate_loc_list=1
 "let g:syntastic_auto_loc_list=1
 
-"Plugin 'jaxbot/syntastic-react' " syntax for React, need install npm: eslint, babel-eslint, eslint-plugin-react
-let g:syntastic_javascript_checkers = ['eslint']
+"Plug 'jaxbot/syntastic-react' " syntax for React, need install npm: eslint, babel-eslint, eslint-plugin-react
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_javascript_checkers=['eslint']
 
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " Markdown syntax highlighting, matching rules and mappings
 let g:vim_markdown_folding_disabled = 1
