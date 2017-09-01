@@ -60,8 +60,10 @@ let g:showmarks_include="abcdefghijklmnopqrstuvwxyz"
 
 " TOOLS
 Plug 'rking/ag.vim' " search in many files # require the_silver_searcher
-Plug 'kien/ctrlp.vim' " quick open file
+Plug 'ctrlpvim/ctrlp.vim' " quick open file
 let g:ctrlp_working_path_mode = 'a' " Let CtrlP to use path mode to vim working directory as highest root
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
 
 "Plug 'vim-scripts/dbext.vim' " quick run sql script
 "let g:dbext_default_profile_testing_wfh = 'type=PGSQL:user=postgres:passwd=postgres:host=172.16.9.54:port=6432:dbname=testing_wheaton'
