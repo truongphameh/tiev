@@ -23,15 +23,11 @@ wget https://raw.githubusercontent.com/tiev/tiev/master/.gitconfig -O ~/.gitconf
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmessage
 
 # Install VIM
-brew install vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/.vimrc ~/.vimrc.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/mac.vimrc -O ~/.vimrc
-vim +PluginInstall +qall
-
-## Compile YouCompleteMe
-brew install cmake
-(cd ~/.vim/bundle/YouCompleteMe && ./install.py)
+brew install neovim
+wget -xL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
+cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bk
+wget https://raw.githubusercontent.com/tiev/tiev/master/mac.init.vim -O ~/.config/nvim/init.vim
+nvim +PlugInstall +qall
 
 ## Install ag command
 brew install the_silver_searcher
