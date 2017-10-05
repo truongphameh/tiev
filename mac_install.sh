@@ -38,6 +38,14 @@ cp ~/.tmux.conf ~/.tmux.conf.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/mac.tmux.conf -O ~/.tmux.conf
 wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmuxline.conf
 
+# Fix vim clipboard in tmux
+# - need two lines in .tmux.conf
+# ```
+#   set -g default-shell $SHELL
+#   set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+# ```
+brew install reattach-to-user-namespace
+
 # Install RVM
 brew install gpg
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
