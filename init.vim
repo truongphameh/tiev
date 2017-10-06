@@ -1,6 +1,9 @@
 " BEFORE START
 " Using neovim, should visit ':help nvim-from-vim'
 
+" set nocompatible
+" filetype off
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -11,9 +14,6 @@ endif
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
-set nocompatible
-filetype off
 
 " VISUAL
 " Status line for vim
@@ -70,6 +70,7 @@ nmap <C-p> :Files<CR>
 
 "Plug 'mattn/gist-vim' " quick upload code snippet on github
 Plug 'scrooloose/nerdcommenter' " quick comment
+let g:NERDSpaceDelims = 1
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " folder tree
 nmap <leader>tr :NERDTreeToggle<cr>
 
@@ -152,10 +153,11 @@ Plug 'elixir-lang/vim-elixir' | Plug 'avdgaag/vim-phoenix'
 Plug 'tpope/vim-rails' " rails syntax
 "Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' } " coffee-script syntax and supports
 Plug 'kylef/apiblueprint.vim', { 'for': 'apib' } " syntax highlight and lint for API Blueprint (apiary.io)
-Plug 'fatih/vim-go' " Go development
-set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-au FileType go nmap <leader>r <Plug>(go-run)
-autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+
+" Plug 'fatih/vim-go' " Go development
+" set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+" au FileType go nmap <leader>r <Plug>(go-run)
+" autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
 
 "Plug 'digitaltoad/vim-pug' " Pug (formerly Jade) template syntax highlighting and indentation
 Plug 'vim-scripts/csv.vim', { 'for': 'csv' } " Show .csv file in vim
@@ -170,15 +172,14 @@ Plug 'jparise/vim-graphql' " Syntax for Graphql
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
-syntax on
-filetype indent on
-filetype plugin on
-filetype plugin indent on    " required
-"END Vundle
+" syntax on
+" filetype indent on
+" filetype plugin on
+" filetype plugin indent on    " required
 
 colorscheme Monokai
-"autocmd BufEnter * colorscheme Monokai
-"autocmd BufEnter *.otl colorscheme vo_dark
+" autocmd BufEnter * colorscheme Monokai
+" autocmd BufEnter *.otl colorscheme vo_dark
 
 set number
 set relativenumber
@@ -200,6 +201,7 @@ set expandtab
 
 " always show at least one line above/below the cursor
 set scrolloff=1
+
 " always show at least 5 character before/after the cursor
 "set sidescrolloff=5
 
@@ -208,18 +210,21 @@ set splitbelow
 set splitright
 
 "" Always show statusline
-set laststatus=2
-set noshowmode
+" set laststatus=2
+" set noshowmode
 
 "" Use 256 colors
-set t_Co=256
+" set t_Co=256
 
 set backspace=2 " make backspace work like most other apps
 
-"map ]l :lnext
-"map [l :lprev
+nmap ]l :lnext
+nmap [l :lprev
 
-noremap <Leader>s :update<CR>
+nnoremap <Leader>s :update<CR>
+
+nnoremap cp :let @* = expand("%")<CR>
+nnoremap cP :let @* = expand("%:p")<CR>
 
 " git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
