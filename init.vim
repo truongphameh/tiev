@@ -20,10 +20,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "START vim airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'molokai'
+let g:airline_theme = 'minimalist'
 
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -47,6 +49,8 @@ let g:bufferline_fname_mod = ':f'
 "END vim airline
 
 Plug 'edkolev/tmuxline.vim' " tmuxline
+let g:tmuxline_powerline_separators = 0
+
 Plug 'skammer/vim-css-color' " preview css color while editing
 "Plug 'nathanaelkane/vim-indent-guides' " show indent lines
 Plug 'mhinz/vim-signify' " show VCS icon in VIM sign column
@@ -60,10 +64,15 @@ highlight ShowMarksHLo cterm=bold ctermfg=green ctermbg=12 gui=bold guifg=blue g
 highlight ShowMarksHLm cterm=bold ctermfg=178 ctermbg=12 gui=bold guifg=blue guibg=lightblue
 let g:showmarks_include="abcdefghijklmnopqrstuvwxyz"
 
+" Colorscheme
+" Plug 'nightsense/vrunchbang'
+" Plug 'nightsense/office'
+
 " TOOLS
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nmap <C-p> :Files<CR>
+nnoremap <leader>; :Buffers<CR>
 
 "Plug 'vim-scripts/dbext.vim' " quick run sql script
 "let g:dbext_default_profile_testing_wfh = 'type=PGSQL:user=postgres:passwd=postgres:host=172.16.9.54:port=6432:dbname=testing_wheaton'
@@ -74,6 +83,7 @@ let g:NERDSpaceDelims = 1
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " folder tree
 nmap <leader>tr :NERDTreeToggle<cr>
 
+Plug 'vim-scripts/TaskList.vim' " list all TODO
 Plug 'majutsushi/tagbar' " side bar list all tags with hierarchy scope structure
 Plug 'vim-scripts/taglist.vim' " list of tags for quick jump to definitions # require exuberant ctags utility - apt-get install exuberant-ctags
 "Plug 'vim-scripts/vcscommand.vim' " source-control commands
@@ -88,6 +98,7 @@ let g:vimux_ruby_cmd_all_tests = "bundle exec rspec"
 let g:vimux_ruby_clear_console_on_run = 0
 let g:vimux_ruby_file_relative_paths = 1
 nmap <Leader>rl :VimuxRunLastCommand<CR>
+nmap <Leader>rc :VimuxPromptCommand<CR>
 
 Plug 'JarrodCTaylor/vim-shell-executor' " execute buffer in a split pane
 Plug 'tpope/vim-unimpaired' " pairs of mapping
@@ -99,6 +110,11 @@ Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
 Plug 'wakatime/vim-wakatime' " WakaTime: log time developing
 Plug 'tpope/vim-bundler' " support bundler commands and build ctags for gems
+
+" Code Review Github PR
+Plug 'junkblocker/patchreview-vim' " Review patch / diff
+Plug '~/code/githubreview.vim' " Review Github PR in Vim
+Plug 'Asheq/close-buffers.vim' " Quick close buffers
 
 " AUTO-TEXT
 Plug 'docunext/closetag.vim' " Auto close HTML tags
@@ -117,7 +133,7 @@ Plug 'ervandew/supertab' " auto-complete with tab key
 let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
 
-"Plug 'godlygeek/tabular' " tab tools
+Plug 'godlygeek/tabular' " tab tools
 "Plug 'MarcWeber/vim-addon-mw-utils'
 
 " Snippets
@@ -177,9 +193,10 @@ call plug#end()            " required
 " filetype plugin on
 " filetype plugin indent on    " required
 
-colorscheme Monokai
+colorscheme minimalist
+" colorscheme Monokai
 " autocmd BufEnter * colorscheme Monokai
-" autocmd BufEnter *.otl colorscheme vo_dark
+" autocmd BufEnter *.otl colorscheme votl_dark
 
 set number
 set relativenumber
