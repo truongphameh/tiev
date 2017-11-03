@@ -50,6 +50,7 @@ let g:bufferline_fname_mod = ':f'
 
 Plug 'edkolev/tmuxline.vim' " tmuxline
 let g:tmuxline_powerline_separators = 0
+let g:airline#extensions#tmuxline#enabled = 0 " disable airline-tmuxline extension to set tmuxline theme manually. Current: Tmuxline airline righteous
 
 Plug 'skammer/vim-css-color' " preview css color while editing
 "Plug 'nathanaelkane/vim-indent-guides' " show indent lines
