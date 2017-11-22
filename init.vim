@@ -1,6 +1,12 @@
 " BEFORE START
 " Using neovim, should visit ':help nvim-from-vim'
 
+" AFTER INSTALLATION
+" Gem supports: add these gems in ~/.rvm/gemsets/global.gems
+" - gem-ctags : generate ctags for gems
+" - gem-browse : `gem browse <gem name>` to go to gem homepage. gem edit, gem open, gem clone
+" - neovim : support ruby for neovim
+
 " set nocompatible
 " filetype off
 
