@@ -1,12 +1,6 @@
 " BEFORE START
 " Using neovim, should visit ':help nvim-from-vim'
 
-" AFTER INSTALLATION
-" Gem supports: add these gems in ~/.rvm/gemsets/global.gems
-" - gem-ctags : generate ctags for gems
-" - gem-browse : `gem browse <gem name>` to go to gem homepage. gem edit, gem open, gem clone
-" - neovim : support ruby for neovim
-
 " set nocompatible
 " filetype off
 
@@ -28,37 +22,51 @@ Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
 
-let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_min_count = 2
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
+" let g:airline#extensions#tabline#buffer_nr_show = 1
+" let g:airline#extensions#tabline#buffer_min_count = 2
 
-let g:airline#extensions#hunks#enabled = 0
+" let g:airline#extensions#hunks#enabled = 0
 
-let g:airline#extensions#bufferline#enabled = 0
-let g:airline#extensions#bufferline#overwrite_variables = 1
-let g:bufferline_echo = 0
-let g:bufferline_rotate = 1
-let g:bufferline_fname_mod = ':f'
+" let g:airline#extensions#bufferline#enabled = 0
+" let g:airline#extensions#bufferline#overwrite_variables = 1
+" let g:bufferline_echo = 0
+" let g:bufferline_rotate = 1
+" let g:bufferline_fname_mod = ':f'
+
+" Auto hide tabline when there's only one tab
+fu! AirlineOn()
+  if tabpagenr('$') > 1
+    set go+=e
+  endif
+endfu
+fu! AirlineOff()
+  if tabpagenr('$') == 2
+    set go-=e
+  endif
+endfu
+au TabEnter * :call AirlineOn()
+au TabLeave * :call AirlineOff()
+
 "END vim airline
 
 Plug 'edkolev/tmuxline.vim' " tmuxline
 let g:tmuxline_powerline_separators = 0
 let g:airline#extensions#tmuxline#enabled = 0 " disable airline-tmuxline extension to set tmuxline theme manually. Current: Tmuxline airline righteous
 
-Plug 'skammer/vim-css-color' " preview css color while editing
 "Plug 'nathanaelkane/vim-indent-guides' " show indent lines
 Plug 'mhinz/vim-signify' " show VCS icon in VIM sign column
 Plug 'vim-scripts/guicolorscheme.vim'
@@ -154,10 +162,20 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " SYNTAX
 Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
 
+" Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
+" set hidden
+" let g:LanguageClient_serverCommands = {
+"       \'ruby': ['language_server-ruby'],
+"       \'javascript': ['javascript-typescript-stdio']
+"       \}
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 Plug 'w0rp/ale' " asynchronous linter
 let g:ale_linters = {
       \'javascript': ['eslint'],
-      \'ruby': ['rubocop']
+      \'ruby': ['rubocop','reek']
       \}
 let g:ale_fixers = {
       \'javascript': ['eslint'],
@@ -166,8 +184,6 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 'always' " always, normal, insert or never
 let g:airline#extensions#ale#enabled = 1 " integrate with vim-airline
 
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' } " Markdown syntax highlighting, matching rules and mappings
-let g:vim_markdown_folding_disabled = 1
 Plug 'pangloss/vim-javascript' " better javascript indentation
 let g:javascript_plugin_flow = 1
 
