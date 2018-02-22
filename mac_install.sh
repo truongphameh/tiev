@@ -16,6 +16,9 @@ wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
+## Install hub command
+brew install hub
+
 ## Get the personal configurations
 cp ~/.zshrc ~/.zshrc.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/mac.zshrc -O ~/.zshrc
