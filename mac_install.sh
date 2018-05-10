@@ -70,3 +70,6 @@ echo "cp /usr/local/Cellar/redis/{version}/homebrew.mxcl.redis.plist ~/Library/L
 echo "____________________"
 
 xcode-select --install
+
+# AFTER
+# - install Hasklig font - support ligature -> choose this font & turn ligature support on
