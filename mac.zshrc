@@ -50,9 +50,10 @@ export UNBUNDLED_COMMANDS=(guard)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git rails ruby rvm gem bundler catimg dircycle web-search colorize compleat cp safe-paste fasd jump rake-fast vundle node
+plugins=(git rails gem bundler web-search compleat rake-fast node
+# cp tmux ruby rvm catimg safe-paste fasd jump
 zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
-zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
+#zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,7 +91,7 @@ bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 export TERM="screen-256color"
-export DEFAULT_USER="viett"
+export DEFAULT_USER="viett@vietts-MacBook-Pro"
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -100,13 +101,8 @@ if [ -f ~/.env ]; then
   . ~/.env
 fi
 
-#alias vim='/usr/local/Cellar/vim/7.4.1655/bin/vim'
 alias rake='noglob rake'
-alias opencv='~/.compile_opencv.sh'
 alias fucking='sudo'
-
-# token of viettp
-export APIARY_API_KEY="e74bcfbda148acbbfc2ae151f85beb31"
 
 AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
