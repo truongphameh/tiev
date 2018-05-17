@@ -29,16 +29,23 @@ wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmes
 brew install neovim
 wget -xL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/mac.init.vim -O ~/.config/nvim/init.vim
+wget https://raw.githubusercontent.com/tiev/tiev/master/init.vim -O ~/.config/nvim/init.vim
 nvim +PlugInstall +qall
 
-## Install ag command
-brew install the_silver_searcher
+## Install ag command (deprecated, using fzf, installed by Plug in neovim)
+# brew install the_silver_searcher
+
+## Install python3 - support python for neovim
+brew install python3
+pip3 install neovim
+
+## Install neovim-remote
+pip3 install neovim-remote
 
 # Install tmux
 brew install tmux
 cp ~/.tmux.conf ~/.tmux.conf.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/mac.tmux.conf -O ~/.tmux.conf
+wget https://raw.githubusercontent.com/tiev/tiev/master/.tmux.conf -O ~/.tmux.conf
 wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmuxline.conf
 
 # Fix vim clipboard in tmux

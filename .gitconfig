@@ -1,8 +1,10 @@
 [user]
-	email = phuocviet89@gmail.com
+  email = phuocviet89@gmail.com
+  name = Viet (Drake) Tran
 [core]
-	editor = vim
+  editor = nvim
   autocrlf = input
+  ; commentchar = ";"
 [alias]
   hide = update-index --assume-unchanged
   unhide = update-index --no-assume-unchanged
@@ -11,11 +13,16 @@
   unskip = update-index --no-skip-worktree
   ls-skipped = !git ls-files -v | grep "^[S]"
   s = status -s
-	lg = log --oneline --decorate --all --graph
+  lg = log --oneline --decorate --all --graph
   llg = log --format=moreoneline --decorate --graph --all
 [push]
-	default = simple
+  default = simple
 [commit]
   template = ~/.gitmessage
 [pretty]
   moreoneline = "%C(auto)%h%d% s% Cgreen(%ar)% C(blue dim)<%an>"
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

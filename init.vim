@@ -4,6 +4,11 @@
 " set nocompatible
 " filetype off
 
+" Use nvim as preferred editor
+if has('nvim') && executable('nvr')
+  let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -103,6 +108,7 @@ Plug 'majutsushi/tagbar' " side bar list all tags with hierarchy scope structure
 Plug 'vim-scripts/taglist.vim' " list of tags for quick jump to definitions # require exuberant ctags utility - apt-get install exuberant-ctags
 "Plug 'vim-scripts/vcscommand.vim' " source-control commands
 Plug 'tpope/vim-fugitive' " git wrapper
+Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
 Plug 'tpope/vim-surround' " quick brackets
 Plug 'bronson/vim-trailing-whitespace' " mark / quick remove trailing spaces
 
@@ -114,16 +120,18 @@ let g:vimux_ruby_clear_console_on_run = 0
 let g:vimux_ruby_file_relative_paths = 1
 nmap <Leader>rl :VimuxRunLastCommand<CR>
 nmap <Leader>rc :VimuxPromptCommand<CR>
+nmap <Leader>ra :RunAllRubyTests<CR>
+nmap <Leader>rr :RunRubyFocusedTest<CR>
 
 Plug 'JarrodCTaylor/vim-shell-executor' " execute buffer in a split pane
 Plug 'tpope/vim-unimpaired' " pairs of mapping
 Plug 'jpalardy/vim-slime' " Grab some text and 'send' it to a GNU Screen / tmux / whimrepl session
-let g:slime_target="tmux" " Configure vim-slime to send text to tmux
+let g:slime_target="neovim" " Configure vim-slime to send text to tmux
 
 Plug 'vimoutliner/vimoutliner' " VimOutliner
 Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
-Plug 'wakatime/vim-wakatime' " WakaTime: log time developing
+Plug 'wakatime/vim-wakatime' " WakaTime : log time developing
 Plug 'tpope/vim-bundler' " support bundler commands and build ctags for gems
 
 " Code Review Github PR
@@ -174,8 +182,8 @@ Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for p
 
 Plug 'w0rp/ale' " asynchronous linter
 let g:ale_linters = {
-      \'javascript': ['eslint'],
-      \'ruby': ['rubocop','reek']
+      \'javascript': ['eslint','flow'],
+      \'ruby': ['rubocop','reek','brakeman','rails_best_practices']
       \}
 let g:ale_fixers = {
       \'javascript': ['eslint'],
@@ -183,6 +191,10 @@ let g:ale_fixers = {
       \}
 let g:ale_lint_on_text_changed = 'always' " always, normal, insert or never
 let g:airline#extensions#ale#enabled = 1 " integrate with vim-airline
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <Leader>ff :ALEFix<CR>
 
 Plug 'pangloss/vim-javascript' " better javascript indentation
 let g:javascript_plugin_flow = 1
@@ -258,13 +270,20 @@ set splitright
 
 set backspace=2 " make backspace work like most other apps
 
-nmap ]l :lnext
-nmap [l :lprev
+nmap ]l :lnext<CR>
+nmap [l :lprev<CR>
 
 nnoremap <Leader>s :update<CR>
 
 nnoremap cp :let @* = expand("%")<CR>
 nnoremap cP :let @* = expand("%:p")<CR>
+
+" Terminal Emulator configs
+tnoremap <C-w><C-w> <C-\><C-n><C-w><C-w>
+tnoremap <C-w><Esc> <C-\><C-n>
+" tnoremap <C-v><Esc> <Esc>
+highlight! link TermCursorNC Cursor
+highlight! TermCursor guibg=red guifg=white ctermbg=1 ctermfg=15
 
 " git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
