@@ -53,8 +53,8 @@ export UNBUNDLED_COMMANDS=(guard)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails gem bundler web-search compleat rake-fast node
-# cp tmux ruby rvm catimg safe-paste fasd jump
+plugins=(git rails gem bundler web-search compleat rake-fast node tmux
+# cp ruby rvm catimg safe-paste fasd jump
 zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
 #zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
 )
