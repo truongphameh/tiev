@@ -5,9 +5,9 @@
 " filetype off
 
 " Use nvim as preferred editor
-if has('nvim') && executable('nvr')
-  let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-endif
+" if has('nvim') && executable('nvr')
+"   let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+" endif
 
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
@@ -113,20 +113,17 @@ Plug 'tpope/vim-surround' " quick brackets
 Plug 'bronson/vim-trailing-whitespace' " mark / quick remove trailing spaces
 
 Plug 'benmills/vimux' " run commands in another tmux pane from vim
-Plug 'pgr0ss/vimux-ruby-test' " run ruby test using vmux
-let g:vimux_ruby_cmd_unit_test = "bundle exec rspec"
-let g:vimux_ruby_cmd_all_tests = "bundle exec rspec"
-let g:vimux_ruby_clear_console_on_run = 0
-let g:vimux_ruby_file_relative_paths = 1
 nmap <Leader>rl :VimuxRunLastCommand<CR>
 nmap <Leader>rc :VimuxPromptCommand<CR>
-nmap <Leader>ra :RunAllRubyTests<CR>
-nmap <Leader>rr :RunRubyFocusedTest<CR>
+Plug 'janko-m/vim-test' " Run tests
+let test#strategy='vimux'
+nmap <Leader>ra :TestFile<CR>
+nmap <Leader>rr :TestNearest<CR>
 
 Plug 'JarrodCTaylor/vim-shell-executor' " execute buffer in a split pane
 Plug 'tpope/vim-unimpaired' " pairs of mapping
 Plug 'jpalardy/vim-slime' " Grab some text and 'send' it to a GNU Screen / tmux / whimrepl session
-let g:slime_target="neovim" " Configure vim-slime to send text to tmux
+let g:slime_target="tmux" " Configure vim-slime to send text to tmux
 
 Plug 'vimoutliner/vimoutliner' " VimOutliner
 Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
@@ -170,15 +167,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " SYNTAX
 Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
 
-" Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
-" set hidden
-" let g:LanguageClient_serverCommands = {
-"       \'ruby': ['language_server-ruby'],
-"       \'javascript': ['javascript-typescript-stdio']
-"       \}
-" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
+set hidden " Required for operations modifying multiple buffers like rename
+let g:LanguageClient_serverCommands = {
+      \'ruby': ['tcp://127.0.0.1:7658'],
+      \'javascript': ['javascript-typescript-stdio']
+      \}
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 Plug 'w0rp/ale' " asynchronous linter
 let g:ale_linters = {
@@ -282,6 +279,7 @@ nnoremap cP :let @* = expand("%:p")<CR>
 tnoremap <C-w><C-w> <C-\><C-n><C-w><C-w>
 tnoremap <C-w><Esc> <C-\><C-n>
 " tnoremap <C-v><Esc> <Esc>
+nnoremap <C-w>b :echo b:terminal_job_id<CR>
 highlight! link TermCursorNC Cursor
 highlight! TermCursor guibg=red guifg=white ctermbg=1 ctermfg=15
 
