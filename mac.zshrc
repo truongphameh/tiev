@@ -123,6 +123,7 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # add config path of ImageMagick
 export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
