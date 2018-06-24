@@ -27,7 +27,7 @@ Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-let g:airline#extensions#whitespace#enabled = 1 " detection of whitespace errors
+" let g:airline#extensions#whitespace#enabled = 1 " detection of whitespace errors
 
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#fnamemod = ':t'
@@ -225,15 +225,16 @@ Plug 'jparise/vim-graphql' " Syntax for Graphql
 call plug#end()            " required
 
 " Show asyncrun_status in airline error section
-function! Get_asyncrun_error()
-  let async_status = g:asyncrun_status
-  if async_status != 'failure'
-    return ''
-  endif
-  return 'Asyncrun'
-endfunction
-call airline#parts#define_function('asyncrun_error', 'Get_asyncrun_error')
-let g:airline_section_error = airline#section#create_right(['%{airline#extensions#ale#get_error()}', 'asyncrun_error'])
+let g:airline_section_warning = airline#section#create(['%{airline#extensions#ale#get_warning()}', '%{g:asyncrun_status == "running" ? "running..." : ""}'])
+let g:airline_section_error = airline#section#create(['%{airline#extensions#ale#get_error()}', '%{g:asyncrun_status == "failure" ? "Async" : ""}'])
+
+" Auto run tests when save code or spec files
+augroup autotest
+  autocmd!
+  autocmd BufWrite * if test#exists() && airline#extensions#ale#get_error() == "" |
+    \   TestFile |
+    \ endif
+augroup END
 
 " syntax on
 " filetype indent on
