@@ -26,6 +26,8 @@ Plug 'bling/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 "START vim airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+let g:airline#extensions#whitespace#enabled = 1 " detection of whitespace errors
 
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#fnamemod = ':t'
@@ -44,27 +46,27 @@ let g:airline_theme = 'minimalist'
 " let g:airline#extensions#tabline#buffer_nr_show = 1
 " let g:airline#extensions#tabline#buffer_min_count = 2
 
-" let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#enabled = 0 " disable hunk status (+, -, ~ line counts)
 
 " let g:airline#extensions#bufferline#enabled = 0
-" let g:airline#extensions#bufferline#overwrite_variables = 1
+" let g:airline#extensions#bufferline#overwrite_variables = 0
 " let g:bufferline_echo = 0
 " let g:bufferline_rotate = 1
 " let g:bufferline_fname_mod = ':f'
 
-" Auto hide tabline when there's only one tab
-fu! AirlineOn()
-  if tabpagenr('$') > 1
-    set go+=e
-  endif
-endfu
-fu! AirlineOff()
-  if tabpagenr('$') == 2
-    set go-=e
-  endif
-endfu
-au TabEnter * :call AirlineOn()
-au TabLeave * :call AirlineOff()
+" " Auto hide tabline when there's only one tab
+" fu! AirlineOn()
+"   if tabpagenr('$') > 1
+"     set go+=e
+"   endif
+" endfu
+" fu! AirlineOff()
+"   if tabpagenr('$') == 2
+"     set go-=e
+"   endif
+" endfu
+" au TabEnter * :call AirlineOn()
+" au TabLeave * :call AirlineOff()
 
 "END vim airline
 
@@ -110,20 +112,22 @@ Plug 'vim-scripts/taglist.vim' " list of tags for quick jump to definitions # re
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
 Plug 'tpope/vim-surround' " quick brackets
-Plug 'bronson/vim-trailing-whitespace' " mark / quick remove trailing spaces
+
+Plug 'skywind3000/asyncrun.vim' " Run commands asynchronously using new APIs in Vim 8 and NeoVim
+" let g:asyncrun_open = 8
 
 Plug 'benmills/vimux' " run commands in another tmux pane from vim
 nmap <Leader>rl :VimuxRunLastCommand<CR>
 nmap <Leader>rc :VimuxPromptCommand<CR>
 Plug 'janko-m/vim-test' " Run tests
-let test#strategy='vimux'
+let test#strategy='asyncrun'
 nmap <Leader>ra :TestFile<CR>
 nmap <Leader>rr :TestNearest<CR>
 
-Plug 'JarrodCTaylor/vim-shell-executor' " execute buffer in a split pane
+" Plug 'JarrodCTaylor/vim-shell-executor' " execute buffer in a split pane
 Plug 'tpope/vim-unimpaired' " pairs of mapping
 Plug 'jpalardy/vim-slime' " Grab some text and 'send' it to a GNU Screen / tmux / whimrepl session
-let g:slime_target="tmux" " Configure vim-slime to send text to tmux
+let g:slime_target="neovim" " Configure vim-slime to send text to tmux
 
 Plug 'vimoutliner/vimoutliner' " VimOutliner
 Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
@@ -219,6 +223,17 @@ Plug 'jparise/vim-graphql' " Syntax for Graphql
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
+
+" Show asyncrun_status in airline error section
+function! Get_asyncrun_error()
+  let async_status = g:asyncrun_status
+  if async_status != 'failure'
+    return ''
+  endif
+  return 'Asyncrun'
+endfunction
+call airline#parts#define_function('asyncrun_error', 'Get_asyncrun_error')
+let g:airline_section_error = airline#section#create_right(['%{airline#extensions#ale#get_error()}', 'asyncrun_error'])
 
 " syntax on
 " filetype indent on
