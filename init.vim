@@ -301,3 +301,5 @@ highlight! TermCursor guibg=red guifg=white ctermbg=1 ctermfg=15
 
 " git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd BufRead,BufNewFile *.thor set filetype=ruby
+autocmd BufRead,BufNewFile Thorfile set filetype=ruby
