@@ -172,7 +172,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
 
 Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
-set hidden " Required for operations modifying multiple buffers like rename
+" set hidden " Required for operations modifying multiple buffers like rename
 let g:LanguageClient_serverCommands = {
       \'ruby': ['tcp://127.0.0.1:7658'],
       \'javascript': ['javascript-typescript-stdio']
@@ -282,6 +282,8 @@ set splitright
 " set t_Co=256
 
 set backspace=2 " make backspace work like most other apps
+
+set formatoptions+=j " format the joined lines using J in normal mode
 
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
