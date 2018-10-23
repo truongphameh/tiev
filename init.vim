@@ -112,6 +112,7 @@ Plug 'vim-scripts/taglist.vim' " list of tags for quick jump to definitions # re
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
 Plug 'tpope/vim-surround' " quick brackets
+Plug 'jiangmiao/auto-pairs' " better insert brackets, parens, quotes in pair
 
 Plug 'skywind3000/asyncrun.vim' " Run commands asynchronously using new APIs in Vim 8 and NeoVim
 " let g:asyncrun_open = 8
@@ -139,6 +140,8 @@ Plug 'tpope/vim-bundler' " support bundler commands and build ctags for gems
 Plug 'junkblocker/patchreview-vim' " Review patch / diff
 Plug '~/code/githubreview.vim' " Review Github PR in Vim
 Plug 'Asheq/close-buffers.vim' " Quick close buffers
+
+Plug 'kyuhi/vim-emoji-complete' " Emoji auto-complete
 
 " AUTO-TEXT
 Plug 'docunext/closetag.vim' " Auto close HTML tags
@@ -289,6 +292,7 @@ nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
 
 nnoremap <Leader>s :update<CR>
+nnoremap <Leader>z :tabnew %<CR>
 
 nnoremap cp :let @* = expand("%")<CR>
 nnoremap cP :let @* = expand("%:p")<CR>
@@ -303,5 +307,6 @@ highlight! TermCursor guibg=red guifg=white ctermbg=1 ctermfg=15
 
 " git commit messages
 autocmd Filetype gitcommit setlocal spell textwidth=72
+
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 autocmd BufRead,BufNewFile Thorfile set filetype=ruby
