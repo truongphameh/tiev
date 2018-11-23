@@ -1,0 +1,18 @@
+sandbox_init_nvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+
+sandbox_hook nvm node
+sandbox_hook nvm npm
+sandbox_hook nvm nodemon
+
+sandbox_init_rvm() {
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+}
+
+sandbox_hook rvm ruby
+sandbox_hook rvm irb
+sandbox_hook rvm pry
+sandbox_hook rvm gem
+sandbox_hook rvm bundle

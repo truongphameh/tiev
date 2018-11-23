@@ -1,6 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+source $HOME/.sandboxd
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -8,7 +10,10 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="frontcube"
-ZSH_THEME="bullet-train"
+ZSH_THEME='bullet-train'
+
+BULLETTRAIN_CONTEXT_DEFAULT_USER='viett'
+BULLETTRAIN_RUBY_PREFIX='♦'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -44,22 +49,18 @@ DISABLE_AUTO_TITLE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# export UNBUNDLED_COMMANDS=(guard)
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git rails ruby rvm gem bundler colorize cp safe-paste rake-fast vundle
-zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
-zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
+plugins=(git rails bundler tmux
+# gem web-search compleat rake-fast node cp ruby rvm catimg safe-paste fasd jump
+fast-syntax-highlighting #https://github.com/zdharma/fast-syntax-highlighting
+# zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
+#zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
 )
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-#export PATH="/home/viettp/.rvm/gems/ree-1.8.7-2012.02@msss/bin:/home/viettp/.rvm/gems/ree-1.8.7-2012.02@global/bin:/home/viettp/.rvm/rubies/ree-1.8.7-2012.02/bin:/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin:/home/viettp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH="/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin:/home/viettp/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -70,6 +71,17 @@ export PATH="/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin
 # else
 #   export EDITOR='mvim'
 # fi
+
+export EDITOR=nvim
+
+# Prevent open nested nvim in Terminal Emulator
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  if [ -x "$(command -v nvr)" ]; then
+    alias nvim=nvr
+  else
+    alias nvim='echo "No nesting!"'
+  fi
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,27 +98,21 @@ export PATH="/home/viettp/.rvm/bin:/home/viettp/.local/bin:/usr/local/heroku/bin
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export TERM="screen-256color"
-export DEFAULT_USER="viettp"
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+if [ -f ~/.env ]; then
+  . ~/.env
+fi
+
 alias rake='noglob rake'
-alias opencv='~/.compile_opencv.sh'
 alias fucking='sudo'
-
-# token of viettp
-export APIARY_API_KEY="e74bcfbda148acbbfc2ae151f85beb31"
-
-#[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-#export GOPATH=$HOME/go
-#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-stty stop undef
 
 AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
@@ -115,3 +121,23 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 #  zle autosuggest-start
 #}
 #zle -N zle-line-init
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# add config path of ImageMagick
+export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# add binary of qt@5.5, used for capybara-webkit
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(hub alias -s)" # Add hub command alias
+
+source $ZSH/oh-my-zsh.sh
