@@ -1,14 +1,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+source $HOME/.sandboxd
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
 #ZSH_THEME="frontcube"
-ZSH_THEME='bullet-train'
+# ZSH_THEME='bullet-train'
+ZSH_THEME='spaceship'
 
 BULLETTRAIN_CONTEXT_DEFAULT_USER='viett'
 BULLETTRAIN_RUBY_PREFIX='♦'
@@ -47,22 +48,21 @@ DISABLE_AUTO_TITLE="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-export UNBUNDLED_COMMANDS=(guard)
+# export UNBUNDLED_COMMANDS=(guard)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails gem bundler web-search compleat rake-fast node tmux
-# cp ruby rvm catimg safe-paste fasd jump
-zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
+plugins=(git rails bundler tmux
+# gem web-search compleat rake-fast node cp ruby rvm catimg safe-paste fasd jump
+fast-syntax-highlighting #https://github.com/zdharma/fast-syntax-highlighting
+# zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
 #zsh-autosuggestions #https://github.com/tarruda/zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -123,20 +123,20 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # add config path of ImageMagick
 export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 # add binary of qt@5.5, used for capybara-webkit
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 eval "$(hub alias -s)" # Add hub command alias
+
+source $ZSH/oh-my-zsh.sh

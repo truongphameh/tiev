@@ -62,7 +62,7 @@ fast-syntax-highlighting #https://github.com/zdharma/fast-syntax-highlighting
 )
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
