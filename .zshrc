@@ -7,10 +7,9 @@ source $HOME/.sandboxd
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
 #ZSH_THEME="frontcube"
-ZSH_THEME='bullet-train'
+# ZSH_THEME='bullet-train'
+ZSH_THEME='spaceship'
 
 BULLETTRAIN_CONTEXT_DEFAULT_USER='viett'
 BULLETTRAIN_RUBY_PREFIX='♦'
