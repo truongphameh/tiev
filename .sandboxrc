@@ -8,7 +8,8 @@ sandbox_hook nvm npm
 sandbox_hook nvm nodemon
 
 sandbox_init_rvm() {
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+  eval "$(rbenv init -)"
 }
 
 sandbox_hook rvm ruby

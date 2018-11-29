@@ -8,11 +8,14 @@ source $HOME/.sandboxd
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="frontcube"
-# ZSH_THEME='bullet-train'
-ZSH_THEME='spaceship'
 
-BULLETTRAIN_CONTEXT_DEFAULT_USER='viett'
-BULLETTRAIN_RUBY_PREFIX='♦'
+# ZSH_THEME='bullet-train'
+# BULLETTRAIN_CONTEXT_DEFAULT_USER='viett'
+# BULLETTRAIN_RUBY_PREFIX='♦'
+
+ZSH_THEME='spaceship'
+SPACESHIP_TIME_SHOW=true
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -121,9 +124,12 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 #}
 #zle -N zle-line-init
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # add config path of ImageMagick
 export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
