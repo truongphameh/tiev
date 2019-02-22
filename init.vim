@@ -56,6 +56,7 @@ Plug 'vim-scripts/TaskList.vim' " list all TODO
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
 Plug 'tpope/vim-surround' " quick brackets
+Plug 'tpope/vim-projectionist' " config projects
 Plug 'jiangmiao/auto-pairs' " better insert brackets, parens, quotes in pair
 
 Plug 'skywind3000/asyncrun.vim' " Run commands asynchronously using new APIs in Vim 8 and NeoVim
@@ -84,6 +85,11 @@ nmap <Leader>rl :VimuxRunLastCommand<CR>
 nmap <Leader>rc :VimuxPromptCommand<CR>
 Plug 'janko-m/vim-test' " Run tests
 let test#strategy='asyncrun'
+let test#ruby#rspec#executable = 'bundle exec rspec'
+" function! EchoStrategy(cmd)
+"   echo 'vim-test: ' . a:cmd
+" endfunction
+" let g:test#custom_strategies = {'echo': function('EchoStrategy')}
 nmap <Leader>ra :TestFile<CR>
 nmap <Leader>rr :TestNearest<CR>
 
@@ -136,7 +142,7 @@ Plug 'asciidoc/vim-asciidoc' " syntax for asciidoc
 Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
 " set hidden " Required for operations modifying multiple buffers like rename
 let g:LanguageClient_serverCommands = {
-      \'ruby': ['tcp://127.0.0.1:7658'],
+      \'ruby': ['solargraph','stdio'],
       \'javascript': ['javascript-typescript-stdio']
       \}
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
@@ -145,14 +151,19 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 Plug 'w0rp/ale' " asynchronous linter
 let g:ale_linters = {
-      \'javascript': ['eslint','flow'],
-      \'ruby': ['rubocop','reek','brakeman','rails_best_practices']
+      \'javascript': ['eslint','flow','prettier'],
+      \'ruby': ['rubocop','brakeman','rails_best_practices', 'eruby'],
+      \'markdown': ['alex','prettier'],
+      \'yaml': ['prettier']
       \}
 let g:ale_fixers = {
-      \'javascript': ['eslint'],
-      \'ruby': ['rubocop']
+      \'*': ['remove_trailing_lines','trim_whitespace'],
+      \'javascript': ['eslint','prettier'],
+      \'ruby': ['rubocop'],
+      \'markdown': ['prettier']
       \}
 let g:ale_lint_on_text_changed = 'always' " always, normal, insert or never
+let g:ale_fix_on_save = 0
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -160,6 +171,8 @@ nmap <Leader>ff :ALEFix<CR>
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' } " better javascript indentation
 let g:javascript_plugin_flow = 1
+
+Plug 'galooshi/vim-import-js' " Fix imports in JS
 
 " Plug 'elixir-lang/vim-elixir' | Plug 'avdgaag/vim-phoenix'
 
@@ -241,6 +254,8 @@ set autoread " autoload file changes
 
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
+nmap ]q :cnext<CR>
+nmap [q :cprevious<CR>
 
 nnoremap <Leader>s :update<CR>
 nnoremap <Leader>z :tabnew %<CR>
