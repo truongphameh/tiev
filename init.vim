@@ -9,6 +9,9 @@
 "   let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
 " endif
 
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Load vim-plug
 if empty(glob("~/.vim/autoload/plug.vim"))
   execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -43,6 +46,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 nmap <C-p> :Files<CR>
 nnoremap <leader>; :Buffers<CR>
+
+Plug 'henrik/vim-open-url' " Open URLs in the current line
 
 "Plug 'vim-scripts/dbext.vim' " quick run sql script
 "let g:dbext_default_profile_testing_wfh = 'type=PGSQL:user=postgres:passwd=postgres:host=172.16.9.54:port=6432:dbname=testing_wheaton'

@@ -40,7 +40,7 @@ nvim +PlugInstall +qall
 
 ## Install python3 - support python for neovim
 brew install python3
-pip3 install neovim
+pip3 install pynvim
 
 ## Install neovim-remote
 pip3 install neovim-remote
