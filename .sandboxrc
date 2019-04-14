@@ -11,7 +11,7 @@ sandbox_hook nvm hero
 sandbox_hook nvm alex
 
 sandbox_init_rb() {
-#  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+#  [[ -s "$HOME/.rbenv/bin/rbenv" ]] && . "$HOME/.rbenv/bin/rbenv"
   eval "$(rbenv init -)"
 }
 
