@@ -19,7 +19,7 @@ window:
   # If both are `0`, this setting is ignored.
   dimensions:
     columns: 80
-    lines: 24
+    lines: 30
 
   # Window padding (changes require restart)
   #
@@ -27,7 +27,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 2
-    y: 2
+    y: 0
 
   # Window decorations
   #
@@ -75,7 +75,7 @@ scrolling:
 # Some applications, like Emacs, rely on knowing about the width of a tab.
 # To prevent unexpected behavior in these applications, it's also required to
 # change the `it` value in terminfo when altering this setting.
-tabspaces: 8
+tabspaces: 2
 
 # Font configuration (changes require restart)
 font:
@@ -98,7 +98,7 @@ font:
     style: Italic
 
   # Point size
-  size: 13.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -248,7 +248,7 @@ colors:
 # Specifying a `duration` of `0` will disable the visual bell.
 visual_bell:
   animation: EaseOutExpo
-  duration: 0
+  duration: 1
 
 # Background opacity
 #
@@ -284,7 +284,7 @@ mouse:
   triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: false
+  hide_when_typing: true
 
   url:
     # URL launcher
@@ -325,10 +325,10 @@ live_config_reload: true
 #
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: /bin/zsh
+  args:
+    - --login
 
 # Key bindings
 #
@@ -420,6 +420,7 @@ key_bindings:
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
   - { key: Key0,     mods: Command, action: ResetFontSize                }
+  - { key: Key6,     mods: Control, chars: "\x1e"                        }
   - { key: Equals,   mods: Command, action: IncreaseFontSize             }
   - { key: Minus,    mods: Command, action: DecreaseFontSize             }
   - { key: K,        mods: Command, action: ClearHistory                 }
@@ -516,3 +517,81 @@ key_bindings:
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
   - { key: NumpadEnter,             chars: "\n"                          }
+
+  # Meta keyninds. Workaround for missing config to map alt to meta.
+  # See: https://github.com/jwilm/alacritty/issues/62
+  - { key: A,        mods: Alt,       chars: "\x1ba"                     }
+  - { key: B,        mods: Alt,       chars: "\x1bb"                     }
+  - { key: C,        mods: Alt,       chars: "\x1bc"                     }
+  - { key: D,        mods: Alt,       chars: "\x1bd"                     }
+  - { key: E,        mods: Alt,       chars: "\x1be"                     }
+  - { key: F,        mods: Alt,       chars: "\x1bf"                     }
+  - { key: G,        mods: Alt,       chars: "\x1bg"                     }
+  - { key: H,        mods: Alt,       chars: "\x1bh"                     }
+  - { key: I,        mods: Alt,       chars: "\x1bi"                     }
+  - { key: J,        mods: Alt,       chars: "\x1bj"                     }
+  - { key: K,        mods: Alt,       chars: "\x1bk"                     }
+  - { key: L,        mods: Alt,       chars: "\x1bl"                     }
+  - { key: M,        mods: Alt,       chars: "\x1bm"                     }
+  - { key: N,        mods: Alt,       chars: "\x1bn"                     }
+  - { key: O,        mods: Alt,       chars: "\x1bo"                     }
+  - { key: P,        mods: Alt,       chars: "\x1bp"                     }
+  - { key: Q,        mods: Alt,       chars: "\x1bq"                     }
+  - { key: R,        mods: Alt,       chars: "\x1br"                     }
+  - { key: S,        mods: Alt,       chars: "\x1bs"                     }
+  - { key: T,        mods: Alt,       chars: "\x1bt"                     }
+  - { key: U,        mods: Alt,       chars: "\x1bu"                     }
+  - { key: V,        mods: Alt,       chars: "\x1bv"                     }
+  - { key: W,        mods: Alt,       chars: "\x1bw"                     }
+  - { key: X,        mods: Alt,       chars: "\x1bx"                     }
+  - { key: Y,        mods: Alt,       chars: "\x1by"                     }
+  - { key: Z,        mods: Alt,       chars: "\x1bz"                     }
+  - { key: A,        mods: Alt|Shift, chars: "\x1ba"                     }
+  - { key: B,        mods: Alt|Shift, chars: "\x1bb"                     }
+  - { key: C,        mods: Alt|Shift, chars: "\x1bc"                     }
+  - { key: D,        mods: Alt|Shift, chars: "\x1bd"                     }
+  - { key: E,        mods: Alt|Shift, chars: "\x1be"                     }
+  - { key: F,        mods: Alt|Shift, chars: "\x1bf"                     }
+  - { key: G,        mods: Alt|Shift, chars: "\x1bg"                     }
+  - { key: H,        mods: Alt|Shift, chars: "\x1bh"                     }
+  - { key: I,        mods: Alt|Shift, chars: "\x1bi"                     }
+  - { key: J,        mods: Alt|Shift, chars: "\x1bj"                     }
+  - { key: K,        mods: Alt|Shift, chars: "\x1bk"                     }
+  - { key: L,        mods: Alt|Shift, chars: "\x1bl"                     }
+  - { key: M,        mods: Alt|Shift, chars: "\x1bm"                     }
+  - { key: N,        mods: Alt|Shift, chars: "\x1bn"                     }
+  - { key: O,        mods: Alt|Shift, chars: "\x1bo"                     }
+  - { key: P,        mods: Alt|Shift, chars: "\x1bp"                     }
+  - { key: Q,        mods: Alt|Shift, chars: "\x1bq"                     }
+  - { key: R,        mods: Alt|Shift, chars: "\x1br"                     }
+  - { key: S,        mods: Alt|Shift, chars: "\x1bs"                     }
+  - { key: T,        mods: Alt|Shift, chars: "\x1bt"                     }
+  - { key: U,        mods: Alt|Shift, chars: "\x1bu"                     }
+  - { key: V,        mods: Alt|Shift, chars: "\x1bv"                     }
+  - { key: W,        mods: Alt|Shift, chars: "\x1bw"                     }
+  - { key: X,        mods: Alt|Shift, chars: "\x1bx"                     }
+  - { key: Y,        mods: Alt|Shift, chars: "\x1by"                     }
+  - { key: Z,        mods: Alt|Shift, chars: "\x1bz"                     }
+  - { key: Key1,      mods: Alt,       chars: "\x1b1"                    }
+  - { key: Key2,      mods: Alt,       chars: "\x1b2"                    }
+  - { key: Key3,      mods: Alt,       chars: "\x1b3"                    }
+  - { key: Key4,      mods: Alt,       chars: "\x1b4"                    }
+  - { key: Key5,      mods: Alt,       chars: "\x1b5"                    }
+  - { key: Key6,      mods: Alt,       chars: "\x1b6"                    }
+  - { key: Key7,      mods: Alt,       chars: "\x1b7"                    }
+  - { key: Key8,      mods: Alt,       chars: "\x1b8"                    }
+  - { key: Key9,      mods: Alt,       chars: "\x1b9"                    }
+  - { key: Key0,      mods: Alt,       chars: "\x1b0"                    }
+  - { key: Space,     mods: Control,   chars: "\x00"                     } # Ctrl + Space
+  - { key: Grave,     mods: Alt,       chars: "\x1b`"                    } # Alt + `
+  - { key: Grave,     mods: Alt|Shift, chars: "\x1b~"                    } # Alt + ~
+  - { key: Period,    mods: Alt,       chars: "\x1b."                    } # Alt + .
+  - { key: Key8,      mods: Alt|Shift, chars: "\x1b*"                    } # Alt + *
+  - { key: Key3,      mods: Alt|Shift, chars: "\x1b#"                    } # Alt + #
+  - { key: Period,    mods: Alt|Shift, chars: "\x1b>"                    } # Alt + >
+  - { key: Comma,     mods: Alt|Shift, chars: "\x1b<"                    } # Alt + <
+  - { key: Minus,     mods: Alt|Shift, chars: "\x1b_"                    } # Alt + _
+  - { key: Key5,      mods: Alt|Shift, chars: "\x1b%"                    } # Alt + %
+  - { key: Key6,      mods: Alt|Shift, chars: "\x1b^"                    } # Alt + ^
+  - { key: Backslash, mods: Alt,       chars: "\x1b\\"                   } # Alt + \
+  - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"                    } # Alt + |

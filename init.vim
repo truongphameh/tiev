@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
 " VISUAL
 Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
 Plug 'flazz/vim-colorschemes' " harvesting colorschemes on vim.org
+Plug 'felixhummel/setcolors.vim'
 
 Plug 'itchyny/lightline.vim' " status line
 let g:lightline = {

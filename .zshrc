@@ -52,12 +52,13 @@ DISABLE_AUTO_TITLE="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # export UNBUNDLED_COMMANDS=(guard)
+BUNDLED_COMMANDS=(racksh)
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails bundler tmux
+plugins=(git rails tmux bundler
 # gem web-search compleat rake-fast node cp ruby rvm catimg safe-paste fasd jump
 fast-syntax-highlighting #https://github.com/zdharma/fast-syntax-highlighting
 # zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
