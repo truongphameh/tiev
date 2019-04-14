@@ -130,7 +130,7 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # add config path of ImageMagick
 export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"

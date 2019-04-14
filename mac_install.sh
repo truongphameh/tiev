@@ -7,7 +7,7 @@ brew install wget
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-## custom zsh theme
+## Custom zsh theme
 git clone https://github.com/powerline/fonts.git
 sh fonts/install.sh
 # wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -O ~/.oh-my-zsh/themes/bullet-train.zsh-theme
@@ -24,15 +24,14 @@ brew install hub
 
 ## Get the personal configurations
 cp ~/.zshrc ~/.zshrc.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/mac.zshrc -O ~/.zshrc
+wget https://raw.githubusercontent.com/tiev/tiev/master/.zshrc -O ~/.zshrc
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitconfig -O ~/.gitconfig
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmessage
 
 # Install VIM
 brew install neovim
-wget -xL https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -O ~/.local/share/nvim/site/autoload/plug.vim
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/init.vim -O ~/.config/nvim/init.vim
+wget https://raw.githubusercontent.com/tiev/tiev/master/mac/.config/nvim/init.vim -O ~/.config/nvim/init.vim
 nvim +PlugInstall +qall
 
 ## Install ag command (deprecated, using fzf, installed by Plug in neovim)
@@ -57,7 +56,8 @@ wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmu
 #   set -g default-shell $SHELL
 #   set -g default-command "reattach-to-user-namespace -l ${SHELL}"
 # ```
-brew install reattach-to-user-namespace
+# Not needed for new OSX versions
+#brew install reattach-to-user-namespace
 
 # Install RVM
 # brew install gpg
