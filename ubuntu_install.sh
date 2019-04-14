@@ -55,8 +55,7 @@ wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmu
 # \curl -sSL https://get.rvm.io | bash -s stable
 
 # Install rbenv
-sudo apt install rbenv
-sudo apt install ruby-build
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash
 
 # Install Postgres
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
