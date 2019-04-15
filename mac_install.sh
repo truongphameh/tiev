@@ -83,6 +83,9 @@ echo "RUN THIS: "
 echo "cp /usr/local/Cellar/redis/{version}/homebrew.mxcl.redis.plist ~/Library/LaunchAgents/"
 echo "____________________"
 
+# Install NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
 xcode-select --install
 
 # AFTER

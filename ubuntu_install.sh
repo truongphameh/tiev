@@ -66,5 +66,8 @@ sudo apt-get install -y postgresql postgresql-contrib
 # Install Redis
 sudo apt-get install redis-server
 
+# Install NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
 # AFTER
 # - install Hasklig font - support ligature -> choose this font & turn ligature support on
