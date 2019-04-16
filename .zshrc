@@ -116,6 +116,7 @@ fi
 
 alias rake='noglob rake'
 alias fucking='sudo'
+alias clipboard='xclip -sel clip' # Fix for Ubuntu clipboard
 
 AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 
