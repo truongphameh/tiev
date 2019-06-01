@@ -58,7 +58,7 @@ BUNDLED_COMMANDS=(racksh)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails tmux bundler
+plugins=(git rails tmux bundler fzf
 # gem web-search compleat rake-fast node cp ruby rvm catimg safe-paste fasd jump
 fast-syntax-highlighting #https://github.com/zdharma/fast-syntax-highlighting
 # zsh-syntax-highlighting #https://github.com/zsh-users/zsh-syntax-highlighting
@@ -130,7 +130,7 @@ AUTOSUGGESTION_HIGHLIGHT_STYLE="fg=4"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 
 # add config path of ImageMagick
 export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig:/opt/local/lib/pkgconfig:$PKG_CONFIG_PATH"
