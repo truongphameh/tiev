@@ -5,18 +5,16 @@
 " filetype off
 
 " Use nvim as preferred editor
-" if has('nvim') && executable('nvr')
-"   let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
-" endif
+if has('nvim') && executable('nvr')
+  let $VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+endif
 
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Load vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+if empty(glob("~/.vim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 "START vim-plug session
@@ -50,7 +48,7 @@ Plug 'junegunn/fzf.vim'
 nmap <C-p> :Files<CR>
 nnoremap <leader>; :Buffers<CR>
 
-Plug 'henrik/vim-open-url' " Open URLs in the current line
+" Plug 'henrik/vim-open-url' " Open URLs in the current line
 
 "Plug 'vim-scripts/dbext.vim' " quick run sql script
 "let g:dbext_default_profile_testing_wfh = 'type=PGSQL:user=postgres:passwd=postgres:host=172.16.9.54:port=6432:dbname=testing_wheaton'
@@ -116,6 +114,7 @@ Plug '~/code/githubreview.vim' " Review Github PR in Vim
 " Plug 'Asheq/close-buffers.vim' " Quick close buffers
 
 Plug 'kyuhi/vim-emoji-complete' " Emoji auto-complete
+Plug 'hauleth/pivotaltracker.vim' " PivotalTracker autocomplete
 
 " AUTO-TEXT
 Plug 'vim-scripts/SearchComplete' " tab completion of words inside of a search ('/')
@@ -142,6 +141,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+Plug 'rhysd/vim-grammarous' " Grammar check with LanguageTool
 
 " SYNTAX
 " Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
