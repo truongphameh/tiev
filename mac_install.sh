@@ -49,6 +49,8 @@ brew install tmux
 cp ~/.tmux.conf ~/.tmux.conf.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/.tmux.conf -O ~/.tmux.conf
 wget https://raw.githubusercontent.com/tiev/tiev/master/.tmuxline.conf -O ~/.tmuxline.conf
+brew install urlview # Quick open url for tmux
+brew install fpp # Facebook Path Picker
 
 # Fix vim clipboard in tmux
 # - need two lines in .tmux.conf

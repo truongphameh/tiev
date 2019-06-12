@@ -106,6 +106,8 @@ let g:slime_target="neovim" " Configure vim-slime to send text to tmux
 Plug 'vimoutliner/vimoutliner' " VimOutliner
 Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
+Plug 'tpope/vim-obsession' " Autosave session info to file, work with tmux-continuum
+
 " Plug 'wakatime/vim-wakatime' " WakaTime : log time developing (slow)
 
 " Code Review Github PR
