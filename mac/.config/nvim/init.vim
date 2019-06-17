@@ -28,10 +28,37 @@ Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
 Plug 'flazz/vim-colorschemes' " harvesting colorschemes on vim.org
 Plug 'felixhummel/setcolors.vim'
 
+Plug 'tpope/vim-obsession' " Autosave session info to file, work with tmux-continuum
 Plug 'itchyny/lightline.vim' " status line
 let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
+      \ 'colorscheme': 'seoul256',
       \ }
+function! LightlineObsession()
+  if exists("*ObsessionStatus")
+    return ObsessionStatus('●', '○')
+  endif
+  return ''
+endfunction
+" Plug 'albertomontesg/lightline-asyncrun' " Asyncrun indicator on lightline - rewritten below
+function! Lightline_asyncrun_status()
+  return g:asyncrun_status
+endfunc
+let g:lightline.component_expand = {
+      \ 'asyncrun_status': 'Lightline_asyncrun_status',
+      \ 'obsession': 'LightlineObsession',
+      \ }
+let g:lightline.active = {
+      \ 'right': [
+      \   ['percent', 'lineinfo'],
+      \   ['fileformat', 'fileencoding', 'filetype'],
+      \   ['asyncrun_status', 'obsession']
+      \ ]
+      \ }
+augroup lightline#asyncrun
+  autocmd!
+  autocmd User AsyncRunStart call lightline#update()
+  autocmd User AsyncRunStop call lightline#update()
+augroup END
 
 Plug 'edkolev/tmuxline.vim' " tmuxline
 let g:tmuxline_powerline_separators = 0
@@ -67,24 +94,6 @@ Plug 'jiangmiao/auto-pairs' " better insert brackets, parens, quotes in pair
 
 Plug 'skywind3000/asyncrun.vim' " Run commands asynchronously using new APIs in Vim 8 and NeoVim
 " let g:asyncrun_open = 8
-" Plug 'albertomontesg/lightline-asyncrun' " Asyncrun indicator on lightline - rewritten below
-function! Lightline_asyncrun_status()
-  return g:asyncrun_status
-endfunc
-let g:lightline.component_expand = {
-      \ 'asyncrun_status': 'Lightline_asyncrun_status',
-      \ }
-let g:lightline.active = {
-      \ 'right': [
-      \   ['percent', 'lineinfo'],
-      \   ['fileformat', 'fileencoding', 'filetype'],
-      \   ['asyncrun_status']
-      \ ]}
-augroup lightline#asyncrun
-  autocmd!
-  autocmd User AsyncRunStart call lightline#update()
-  autocmd User AsyncRunStop call lightline#update()
-augroup END
 
 Plug 'benmills/vimux' " run commands in another tmux pane from vim
 nmap <Leader>rl :VimuxRunLastCommand<CR>
@@ -106,7 +115,6 @@ let g:slime_target="neovim" " Configure vim-slime to send text to tmux
 Plug 'vimoutliner/vimoutliner' " VimOutliner
 Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
-Plug 'tpope/vim-obsession' " Autosave session info to file, work with tmux-continuum
 
 " Plug 'wakatime/vim-wakatime' " WakaTime : log time developing (slow)
 
@@ -215,7 +223,8 @@ augroup autotest
     \ endif
 augroup END
 
-colorscheme minimalist
+colorscheme hybrid
+" colorscheme minimalist
 " colorscheme Monokai
 " autocmd BufEnter * colorscheme Monokai
 " autocmd BufEnter *.otl colorscheme votl_dark
