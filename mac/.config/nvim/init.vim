@@ -24,9 +24,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " VISUAL
-Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
+" Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
 Plug 'flazz/vim-colorschemes' " harvesting colorschemes on vim.org
-Plug 'felixhummel/setcolors.vim'
+" Plug 'felixhummel/setcolors.vim' " go through colorschemes by shortcut key
 
 Plug 'tpope/vim-obsession' " Autosave session info to file, work with tmux-continuum
 Plug 'itchyny/lightline.vim' " status line
@@ -65,7 +65,6 @@ let g:tmuxline_powerline_separators = 0
 
 "Plug 'nathanaelkane/vim-indent-guides' " show indent lines
 Plug 'mhinz/vim-signify' " show VCS icon in VIM sign column
-Plug 'kshenoy/vim-signature' " show marks on the sign bar
 
 Plug 'machakann/vim-highlightedyank' " highlight the yank text
 
@@ -75,17 +74,15 @@ Plug 'junegunn/fzf.vim'
 nmap <C-p> :Files<CR>
 nnoremap <leader>; :Buffers<CR>
 
-" Plug 'henrik/vim-open-url' " Open URLs in the current line
-
 "Plug 'vim-scripts/dbext.vim' " quick run sql script
 "let g:dbext_default_profile_testing_wfh = 'type=PGSQL:user=postgres:passwd=postgres:host=172.16.9.54:port=6432:dbname=testing_wheaton'
 
 "Plug 'mattn/gist-vim' " quick upload code snippet on github
 Plug 'tpope/vim-commentary' " quick comment
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " folder tree
-nmap <leader>tr :NERDTreeToggle<cr>
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " folder tree
+" nmap <leader>tr :NERDTreeToggle<cr>
+Plug 'tpope/vim-vinegar' " Add more to netrw
 
-Plug 'vim-scripts/TaskList.vim' " list all TODO
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
 Plug 'tpope/vim-surround' " quick brackets
@@ -112,15 +109,14 @@ nmap <Leader>rr :TestNearest<CR>
 Plug 'jpalardy/vim-slime' " Grab some text and 'send' it to a GNU Screen / tmux / whimrepl session
 let g:slime_target="neovim" " Configure vim-slime to send text to tmux
 
-Plug 'vimoutliner/vimoutliner' " VimOutliner
-Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
-
+" Plug 'vimoutliner/vimoutliner' " VimOutliner
+" Plug 'vim-scripts/vimoutliner-colorscheme-fix' " Fix color for vimoutliner
 
 " Plug 'wakatime/vim-wakatime' " WakaTime : log time developing (slow)
 
 " Code Review Github PR
-Plug 'junkblocker/patchreview-vim' " Review patch / diff
-Plug '~/code/githubreview.vim' " Review Github PR in Vim
+" Plug 'junkblocker/patchreview-vim' " Review patch / diff
+" Plug '~/code/githubreview.vim' " Review Github PR in Vim
 " Plug 'Asheq/close-buffers.vim' " Quick close buffers
 
 Plug 'kyuhi/vim-emoji-complete' " Emoji auto-complete
@@ -155,7 +151,7 @@ Plug 'rhysd/vim-grammarous' " Grammar check with LanguageTool
 
 " SYNTAX
 " Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
-Plug 'asciidoc/vim-asciidoc' " syntax for asciidoc
+" Plug 'asciidoc/vim-asciidoc' " syntax for asciidoc
 
 Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
 " set hidden " Required for operations modifying multiple buffers like rename
@@ -268,8 +264,14 @@ set backspace=2 " make backspace work like most other apps
 
 set formatoptions+=j " format the joined lines using J in normal mode
 
-set inccommand=nosplit " live-preview substitute command result
+if has('nvim')
+  set inccommand=nosplit " live-preview substitute command result
+endif
+
 set autoread " autoload file changes
+
+" netrw settings
+let g:netrw_banner = 0 " Hide top banner by default, press `I` to trigger it
 
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
