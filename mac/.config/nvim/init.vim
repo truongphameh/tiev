@@ -24,7 +24,18 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " VISUAL
-" Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
+Plug 'junegunn/limelight.vim' " Light to focus
+nmap <Leader>l :Limelight!!<CR>
+let g:limelight_priority = -1 " do not override search highlight
+
+Plug 'junegunn/goyo.vim' " hyper-focus writing mode
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+" Plug 'andreypopp/vim-colors-plain' " Plain colorscheme
+" Plug 'reedes/vim-colors-pencil' " colorscheme pencil
+" Plug 'pbrisbin/vim-colors-off' " colorscheme off
+Plug 'vim-scripts/guicolorscheme.vim' " consistent colors in different terminals
 Plug 'flazz/vim-colorschemes' " harvesting colorschemes on vim.org
 " Plug 'felixhummel/setcolors.vim' " go through colorschemes by shortcut key
 
@@ -33,6 +44,7 @@ Plug 'itchyny/lightline.vim' " status line
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
+
 function! LightlineObsession()
   if exists("*ObsessionStatus")
     return ObsessionStatus('●', '○')
@@ -82,6 +94,8 @@ Plug 'tpope/vim-commentary' " quick comment
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " folder tree
 " nmap <leader>tr :NERDTreeToggle<cr>
 Plug 'tpope/vim-vinegar' " Add more to netrw
+let g:netrw_liststyle = 3 " Change default netrw listing style to tree
+let g:netrw_banner = 0 " Hide top banner by default, press `I` to trigger it
 
 Plug 'tpope/vim-fugitive' " git wrapper
 Plug 'tpope/vim-rhubarb' " quick browse Github file with fugitive :Gbrowse
@@ -209,6 +223,7 @@ Plug 'leshill/vim-json', { 'for': 'json' } " Syntax highlight for JSON files
 
 Plug 'jparise/vim-graphql' " Syntax for Graphql
 
+
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 
@@ -219,7 +234,12 @@ augroup autotest
     \ endif
 augroup END
 
-colorscheme hybrid
+set background=dark
+colorscheme seoul256
+" colorscheme off
+" colorscheme pencil
+" colorscheme plain
+" colorscheme hybrid
 " colorscheme minimalist
 " colorscheme Monokai
 " autocmd BufEnter * colorscheme Monokai
@@ -270,9 +290,6 @@ endif
 
 set autoread " autoload file changes
 
-" netrw settings
-let g:netrw_banner = 0 " Hide top banner by default, press `I` to trigger it
-
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
 nmap ]q :cnext<CR>
@@ -293,7 +310,8 @@ highlight! link TermCursorNC Cursor
 highlight! TermCursor guibg=red guifg=white ctermbg=1 ctermfg=15
 
 " git commit messages
-autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd FileType gitcommit setlocal spell textwidth=72
+autocmd BufReadPost *COMMIT_EDITMSG,*PULLREQ_EDITMSG  Goyo
 
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 autocmd BufRead,BufNewFile Thorfile set filetype=ruby
