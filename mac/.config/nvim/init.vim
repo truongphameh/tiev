@@ -30,8 +30,8 @@ let g:limelight_priority = -1 " do not override search highlight
 
 Plug 'junegunn/goyo.vim' " hyper-focus writing mode
 " Auto turn on Limelight when :Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+" autocmd! User GoyoEnter Limelight
+" autocmd! User GoyoLeave Limelight!
 
 " Ensure :q to quit even when Goyo is active
 function! s:goyo_enter()
@@ -39,6 +39,7 @@ function! s:goyo_enter()
   let b:quitting_bang = 0
   autocmd QuitPre <buffer> let b:quitting = 1
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+  Limelight
 endfunction
 function! s:goyo_leave()
   " Quit Vim if this is the only remaining buffer
@@ -49,6 +50,7 @@ function! s:goyo_leave()
       qa
     endif
   endif
+  Limelight!
 endfunction
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
@@ -338,6 +340,6 @@ autocmd BufRead,BufNewFile *.thor set filetype=ruby
 autocmd BufRead,BufNewFile Thorfile set filetype=ruby
 
 " Templates
-" augroup templates
-"   autocmd BufNewFile week*.adoc 0r ~/.vim/templates/week_review.adoc
-" augroup END
+augroup templates
+  autocmd BufNewFile week*.adoc 0r ~/.vim/templates/week_review.adoc
+augroup END
