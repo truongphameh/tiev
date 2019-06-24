@@ -186,7 +186,7 @@ Plug 'rhysd/vim-grammarous' " Grammar check with LanguageTool
 
 " SYNTAX
 " Plug 'aklt/plantuml-syntax', { 'for': ['pu', 'uml', 'plantuml'] } " syntax for plant-uml
-" Plug 'asciidoc/vim-asciidoc' " syntax for asciidoc
+Plug 'asciidoc/vim-asciidoc' " syntax for asciidoc
 
 Plug 'autozimu/LanguageClient-neovim', {'do': './install.sh', 'branch': 'next' } " Language Server Protocol client
 " set hidden " Required for operations modifying multiple buffers like rename
@@ -336,3 +336,8 @@ autocmd BufReadPost *COMMIT_EDITMSG,*PULLREQ_EDITMSG  Goyo
 
 autocmd BufRead,BufNewFile *.thor set filetype=ruby
 autocmd BufRead,BufNewFile Thorfile set filetype=ruby
+
+" Templates
+" augroup templates
+"   autocmd BufNewFile week*.adoc 0r ~/.vim/templates/week_review.adoc
+" augroup END
