@@ -92,3 +92,6 @@ xcode-select --install
 
 # AFTER
 # - install Hasklig font - support ligature -> choose this font & turn ligature support on
+
+# TOYS
+brew install tldr

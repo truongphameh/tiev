@@ -1,4 +1,4 @@
-sandbox_init_nvm() {
+sandbox_init_nvm(){
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
@@ -10,13 +10,12 @@ sandbox_hook nvm nodemon
 sandbox_hook nvm hero
 sandbox_hook nvm alex
 
-sandbox_init_rb() {
-#  [[ -s "$HOME/.rbenv/bin/rbenv" ]] && . "$HOME/.rbenv/bin/rbenv"
-  eval "$(rbenv init -)"
-}
+#sandbox_init_rb(){
+#  eval "$(rbenv init -)"
+#}
 
-sandbox_hook rb ruby
-sandbox_hook rb irb
-sandbox_hook rb pry
-sandbox_hook rb gem
-sandbox_hook rb bundle
+#sandbox_hook rb ruby
+#sandbox_hook rb irb
+#sandbox_hook rb pry
+#sandbox_hook rb gem
+#sandbox_hook rb bundle

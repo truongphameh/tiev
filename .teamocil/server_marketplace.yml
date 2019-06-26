@@ -1,0 +1,24 @@
+windows:
+  - name: server-marketplace
+    root: ~/code
+    layout: 00bd,238x61,0,0{78x61,0,0,5,78x61,79,0,13,80x61,158,0[80x20,158,0,14,80x22,158,21,15,80x17,158,44,16]}
+    panes:
+      - commands:
+          - cd employment-hero
+          - gup
+          - rails s
+      - commands:
+          - cd marketplace-service
+          - rackup
+      - commands:
+          - cd employment-hero
+          - gup
+          - bundle exec eh_protobuf start -c './config/environment.rb'
+      - commands:
+          - cd frontend-core
+          - gup
+          - yarn
+          - yarn start
+      - commands:
+          - cd auth
+          - docker-compose up

@@ -29,6 +29,7 @@ nmap <Leader>l :Limelight!!<CR>
 let g:limelight_priority = -1 " do not override search highlight
 
 Plug 'junegunn/goyo.vim' " hyper-focus writing mode
+nmap <Leader>g :Goyo<CR>
 " Auto turn on Limelight when :Goyo
 " autocmd! User GoyoEnter Limelight
 " autocmd! User GoyoLeave Limelight!
