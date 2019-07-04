@@ -1,3 +1,6 @@
+## Pre-install
+# - Put ssh keys in place.
+
 # Install Homebrew
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -10,7 +13,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 ## Custom zsh theme
 git clone https://github.com/powerline/fonts.git
 sh fonts/install.sh
-# wget https://raw.githubusercontent.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -O ~/.oh-my-zsh/themes/bullet-train.zsh-theme
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
@@ -27,15 +29,17 @@ cp ~/.zshrc ~/.zshrc.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/.zshrc -O ~/.zshrc
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitconfig -O ~/.gitconfig
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmessage
+wget https://raw.githubusercontent.com/tiev/tiev/master/.sandboxd -O ~/.sandboxd
+wget https://raw.githubusercontent.com/tiev/tiev/master/.sandboxrc -O ~/.sandboxrc
 
 # Install VIM
 brew install neovim
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bk
-wget https://raw.githubusercontent.com/tiev/tiev/master/mac/.config/nvim/init.vim -O ~/.config/nvim/init.vim
+curl https://raw.githubusercontent.com/tiev/tiev/master/mac/.config/nvim/init.vim --create-dirs -o ~/.config/nvim/init.vim
 nvim +PlugInstall +qall
 
-## Install ag command (deprecated, using fzf, installed by Plug in neovim)
-# brew install the_silver_searcher
+## Install ag command (used by fzf also)
+brew install the_silver_searcher
 
 ## Install python3 - support python for neovim
 brew install python3
@@ -89,6 +93,9 @@ echo "____________________"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
 xcode-select --install
+
+# Development dependencies
+brew install imagemagick@6
 
 # AFTER
 # - install Hasklig font - support ligature -> choose this font & turn ligature support on
