@@ -28,6 +28,7 @@ brew install hub
 cp ~/.zshrc ~/.zshrc.bk
 wget https://raw.githubusercontent.com/tiev/tiev/master/.zshrc -O ~/.zshrc
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitconfig -O ~/.gitconfig
+wget https://raw.githubusercontent.com/tiev/tiev/master/.gitignore_global -O ~/.gitignore_global
 wget https://raw.githubusercontent.com/tiev/tiev/master/.gitmessage -O ~/.gitmessage
 wget https://raw.githubusercontent.com/tiev/tiev/master/.sandboxd -O ~/.sandboxd
 wget https://raw.githubusercontent.com/tiev/tiev/master/.sandboxrc -O ~/.sandboxrc

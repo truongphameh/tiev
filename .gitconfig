@@ -4,7 +4,8 @@
 [core]
   editor = nvim
   autocrlf = input
-  ; commentchar = ";"
+  commentchar = ";"
+	excludesfile = ~/.gitignore_global
 [alias]
   hide = update-index --assume-unchanged
   unhide = update-index --no-assume-unchanged
